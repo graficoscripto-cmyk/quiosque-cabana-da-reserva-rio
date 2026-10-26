@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quiosque-cabana-da-reserva-rio.vercel.app/sitemap.xml
