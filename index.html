@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#F7F3EB" />
+  <meta name="theme-color" content="#142333" />
   <title>Quiosque Cabana da Reserva · Ilha 26, Praia da Reserva — Barra da Tijuca, RJ</title>
-  <meta name="description" content="Quiosque Cabana da Reserva na Ilha 26 da Praia da Reserva, Barra da Tijuca (RJ). Frutos do mar, picanha na chapa, drinks, música, área kids, balanço instagramável e espaço para aniversários. WhatsApp (21) 96426-6081." />
+  <meta name="description" content="★ 4,5 no Google (696 avaliações). Quiosque Cabana da Reserva na Ilha 26 da Praia da Reserva, Barra da Tijuca (RJ). Frutos do mar, picanha na chapa, drinks, balanço instagramável, lounge coberto e aniversários. WhatsApp (21) 96426-6081." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="geo.region" content="BR-RJ" />
   <meta name="geo.placename" content="Rio de Janeiro" />
@@ -20,7 +20,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:site_name" content="Quiosque Cabana da Reserva" />
-  <meta property="og:title" content="Quiosque Cabana da Reserva · Praia da Reserva, Barra da Tijuca — RJ" />
+  <meta property="og:title" content="Quiosque Cabana da Reserva · Ilha 26, Praia da Reserva — Barra da Tijuca, RJ" />
   <meta property="og:description" content="Pé na areia na Ilha 26 da Praia da Reserva (RJ). Frutos do mar, picanha na chapa, drinks, música, área kids e comemorações de aniversário. WhatsApp (21) 96426-6081." />
   <meta property="og:url" content="https://quiosque-cabana-da-reserva-rio.vercel.app/" />
   <meta property="og:image" content="https://quiosque-cabana-da-reserva-rio.vercel.app/img/og-cabana-da-reserva.jpg" />
@@ -38,7 +38,7 @@
   <!-- Google Fonts: Newsreader + Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600;6..72,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,600;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Schema.org JSON-LD: Restaurant + BarOrPub + LocalBusiness + FAQPage -->
   <script type="application/ld+json">
@@ -145,29 +145,67 @@
   }
   </script>
 
+  <script>
+    // Ativa classe JS e divide títulos .split em palavras (.w > .wi) antes do primeiro paint
+    document.documentElement.classList.add('js');
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.split').forEach(function (el) {
+        var i = 0;
+        (function walk(node) {
+          Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+            if (n.nodeType === 3) {
+              var frag = document.createDocumentFragment();
+              n.textContent.split(/(\s+)/).forEach(function (t) {
+                if (!t) return;
+                if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(' ')); return; }
+                var w = document.createElement('span'); w.className = 'w';
+                var wi = document.createElement('span'); wi.className = 'wi';
+                wi.style.setProperty('--i', i++); wi.textContent = t;
+                w.appendChild(wi); frag.appendChild(w);
+              });
+              node.replaceChild(frag, n);
+            } else if (n.nodeType === 1) { walk(n); }
+          });
+        })(el);
+      });
+    });
+  </script>
+
   <style>
-    /* Paleta exclusiva Cabana da Reserva: Tenda de Linho, Coral do Mar & Madeira de Deck */
+    /* Paleta exclusiva Cabana da Reserva: Tenda de Linho, Coral do Camarão & Azul Atlântico da Logo */
     :root {
       --linho: #F7F3EB;
-      --linho-2: #ECE5D7;
+      --linho-2: #EDE6D8;
       --papel: #FCFBF8;
-      --madeira: #211C18;
+      --madeira: #1F1A17;
       --madeira-2: #5A5047;
-      --coral: #C9464E;
+      --coral: #D84A52;
+      --coral-escuro: #B8353D;
       --coral-claro: #FCEBEC;
-      --atlantico: #1E466E;
+      --atlantico: #1E3F66;
+      --atlantico-2: #2364AA;
       --atlantico-claro: #E6EFF7;
-      --noite-deck: #18232E;
-      --borda: rgba(33, 28, 24, 0.11);
-      --sombra: 0 18px 42px -18px rgba(24, 35, 46, 0.16);
-      --radius-lg: 22px;
-      --radius-md: 14px;
+      --noite-deck: #142333;
+      --noite-deck-2: #1B3045;
+      --sol: #E8A317;
+      --sol-claro: #F6D58A;
+      --wa: #1FA855;
+      --borda: rgba(31, 26, 23, 0.11);
+      --sombra: 0 22px 48px -20px rgba(20, 35, 51, 0.22);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --spring: cubic-bezier(0.32, 0.72, 0, 1);
       --font-display: 'Newsreader', Georgia, serif;
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; background: var(--linho); color: var(--madeira); }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+      background: var(--linho);
+      color: var(--madeira);
+    }
     body {
       font-family: var(--font-sans);
       font-size: 16px;
@@ -177,37 +215,132 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
+    ::selection { background: var(--coral-claro); color: var(--coral-escuro); }
     img { max-width: 100%; height: auto; display: block; }
+    picture { display: contents; }
     a { color: inherit; text-decoration: none; }
+    a, button, summary { touch-action: manipulation; }
     button, input, select { font: inherit; color: inherit; background: none; border: none; }
     button { cursor: pointer; }
+    ul, ol { list-style: none; }
+    section[id] { scroll-margin-top: 82px; }
     :focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+    }
+    .serif {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
 
     .wrap {
       width: 100%;
       max-width: 1180px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 18px;
     }
 
-    /* Barra superior com auto-hide (máx. 3 links) */
-    .topbar {
+    /* ===== Abertura Cinematográfica (.intro) ===== */
+    .intro {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 90;
-      background: rgba(247, 243, 235, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--borda);
-      transition: transform 0.3s ease;
+      inset: 0;
+      z-index: 130;
+      background: var(--noite-deck);
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+      animation: introOut 0.78s var(--ease) 1.05s forwards;
     }
-    .topbar.is-hidden { transform: translateY(-100%); }
-    .topbar-inner {
+    .intro-in {
+      display: grid;
+      justify-items: center;
+      gap: 14px;
+      color: var(--papel);
+      animation: introIn 0.65s var(--ease) both;
+    }
+    .intro-logo {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    }
+    .intro-in b {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .intro-in b em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--sol-claro);
+    }
+    .intro-wave {
+      width: 156px;
+      height: 20px;
+    }
+    .intro-wave path {
+      fill: none;
+      stroke: var(--coral);
+      stroke-width: 2.6;
+      stroke-linecap: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: drawWave 0.95s var(--ease) 0.12s forwards;
+    }
+    @keyframes drawWave { to { stroke-dashoffset: 0; } }
+    @keyframes introIn { from { opacity: 0; transform: scale(0.9) translateY(10px); } to { opacity: 1; transform: none; } }
+    @keyframes introOut { to { transform: translateY(-100%); visibility: hidden; } }
+
+    /* ===== Barra de Progresso no Topo (.progress) ===== */
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3.5px;
+      z-index: 110;
+      background: linear-gradient(90deg, var(--coral), var(--sol), var(--atlantico-2));
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      pointer-events: none;
+    }
+
+    /* ===== Header Flutuante Auto-Hide (.nav-wrap / .nav-wrap.hide) ===== */
+    .nav-wrap {
+      position: fixed;
+      top: max(10px, env(safe-area-inset-top));
+      left: 0;
+      right: 0;
+      z-index: 95;
+      padding: 0 12px;
+      transition: transform 0.48s var(--spring);
+      pointer-events: none;
+    }
+    .nav-wrap.hide {
+      transform: translateY(-150%);
+    }
+    .nav {
+      pointer-events: auto;
+      max-width: 1180px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 64px;
-      gap: 12px;
+      gap: 10px;
+      padding: 6px 6px 6px 12px;
+      border-radius: 999px;
+      background: rgba(252, 251, 248, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(30, 63, 102, 0.14);
+      box-shadow: 0 14px 34px -18px rgba(20, 35, 51, 0.35);
     }
     .brand {
       display: inline-flex;
@@ -220,77 +353,140 @@
       height: 44px;
       border-radius: 50%;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(24, 35, 46, 0.18);
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 4px 12px rgba(20, 35, 51, 0.18);
+      transition: transform 0.35s var(--ease);
     }
     .brand:hover .brand-logo {
       transform: rotate(-6deg) scale(1.06);
     }
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--coral), #F4A261, var(--atlantico));
-      transform-origin: 0 50%;
-      transform: scaleX(0);
-      z-index: 120;
-      pointer-events: none;
-    }
     .brand-txt {
       display: flex;
       flex-direction: column;
-      line-height: 1.15;
+      line-height: 1.12;
     }
     .brand-name {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 1.06rem;
+      font-size: 1.05rem;
       letter-spacing: -0.015em;
       color: var(--madeira);
     }
     .brand-sub {
-      font-size: 0.71rem;
+      font-size: 0.69rem;
       color: var(--madeira-2);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
     }
     .nav-links {
       display: none;
       align-items: center;
       gap: 28px;
-      font-size: 0.92rem;
+      font-size: 0.91rem;
       font-weight: 600;
       color: var(--madeira-2);
     }
     .nav-links a {
+      position: relative;
       min-height: 44px;
       display: inline-flex;
       align-items: center;
+      transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--coral); }
-    .top-cta {
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 8px;
+      height: 1.8px;
+      background: var(--coral);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.38s var(--spring);
+    }
+    .nav-links a:hover { color: var(--madeira); }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-cta {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       min-height: 44px;
-      padding: 0 16px;
+      padding: 0 18px;
       border-radius: 999px;
       background: var(--noite-deck);
       color: #fff;
       font-size: 0.86rem;
-      font-weight: 600;
+      font-weight: 700;
       transition: background 0.2s ease, transform 0.15s ease;
     }
-    .top-cta:hover { background: var(--atlantico); }
-    .top-cta:active { transform: scale(0.98); }
-    .top-cta svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .nav-cta:hover { background: var(--atlantico); }
+    .nav-cta:active { transform: scale(0.97); }
+    .nav-cta svg { width: 16px; height: 16px; flex-shrink: 0; }
 
-    /* HERO: Foto grande sem véu escuro + texto enxuto */
+    /* ===== Botões Padrão Pro Max ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 54px;
+      padding: 6px 6px 6px 24px;
+      border-radius: 999px;
+      background: var(--coral);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.98rem;
+      box-shadow: 0 14px 32px -12px rgba(216, 74, 82, 0.55);
+      transition: transform 0.35s var(--ease), background 0.2s ease;
+    }
+    .btn i {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-style: normal;
+      flex-shrink: 0;
+      transition: transform 0.35s var(--spring);
+    }
+    .btn i svg { width: 18px; height: 18px; }
+    .btn:active { transform: scale(0.97); }
+    @media (hover: hover) {
+      .btn:hover { background: var(--coral-escuro); }
+      .btn:hover i { transform: translateX(3px); }
+    }
+    .btn.navy {
+      background: var(--noite-deck);
+      box-shadow: 0 14px 30px -14px rgba(20, 35, 51, 0.45);
+    }
+    .btn.navy i { background: var(--coral); }
+    @media (hover: hover) {
+      .btn.navy:hover { background: var(--atlantico); }
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: var(--papel);
+      border: 1.5px solid var(--borda);
+      color: var(--madeira);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-ghost:hover { background: var(--linho-2); border-color: rgba(31, 26, 23, 0.25); }
+
+    /* ===== HERO: Foto Protagonista com Ken Burns + Split de Palavras ===== */
     .hero {
-      padding: 84px 0 48px;
+      padding: 84px 0 36px;
+      position: relative;
     }
     .hero-grid {
       display: grid;
@@ -300,89 +496,208 @@
     }
     .hero-media {
       position: relative;
-      border-radius: var(--radius-lg);
+      border-radius: 26px;
       overflow: hidden;
       background: var(--linho-2);
       box-shadow: var(--sombra);
       aspect-ratio: 4 / 3.45;
-      animation: heroZoomIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+      cursor: zoom-in;
     }
     .hero-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 45%;
+      animation: kenburns 2.6s var(--ease) 0.4s both;
+      will-change: transform;
     }
-    .hero-caption {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(24, 35, 46, 0.84);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      color: #fff;
-      font-size: 0.76rem;
-      font-weight: 600;
-    }
-    .hero-caption-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #F4A261;
-    }
-    .hero-copy {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-      animation: heroFadeUp 0.65s 0.08s cubic-bezier(0.22, 1, 0.36, 1) both;
-    }
-    @keyframes heroZoomIn {
-      from { opacity: 0; transform: scale(1.03); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    @keyframes heroFadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes floatEmblem {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-    @keyframes tickerMove {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-50%, 0, 0); }
+    @keyframes kenburns {
+      from { transform: scale(1.12); }
+      to { transform: scale(1.03); }
     }
     .hero-emblem-badge {
       position: absolute;
       top: 14px;
       right: 14px;
+      z-index: 2;
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      padding: 7px 14px 7px 8px;
+      padding: 6px 13px 6px 7px;
       border-radius: 999px;
-      background: rgba(252, 251, 248, 0.94);
+      background: rgba(252, 251, 248, 0.95);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(30, 70, 110, 0.18);
-      box-shadow: 0 12px 28px rgba(24, 35, 46, 0.22);
+      border: 1px solid rgba(30, 63, 102, 0.18);
+      box-shadow: 0 12px 28px rgba(20, 35, 51, 0.22);
       color: var(--madeira);
       font-size: 0.76rem;
       font-weight: 700;
       animation: floatEmblem 4.2s ease-in-out infinite;
     }
     .hero-emblem-badge img {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       flex-shrink: 0;
+      animation: none;
     }
+    @keyframes floatEmblem {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    .hero-caption {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(20, 35, 51, 0.86);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .hero-caption-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sol);
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .rating-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 6px 15px;
+      border-radius: 999px;
+      background: var(--papel);
+      border: 1px solid var(--borda);
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--madeira);
+      box-shadow: 0 6px 18px -10px rgba(20, 35, 51, 0.18);
+    }
+    .rating-pill svg {
+      width: 16px;
+      height: 16px;
+      color: var(--sol);
+      fill: currentColor;
+    }
+    .hero h1 {
+      font-size: clamp(2.25rem, 6.8vw, 3.85rem);
+      color: var(--madeira);
+      text-wrap: balance;
+    }
+    .hero h1 .serif {
+      color: var(--coral);
+      font-size: 1.05em;
+    }
+    .hero-lead {
+      font-size: clamp(1rem, 2.2vw, 1.12rem);
+      color: var(--madeira-2);
+      max-width: 48ch;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      width: 100%;
+      padding-top: 4px;
+    }
+
+    /* Split Words (.split -> .w > .wi) + Hero Stagger (.hero-in) */
+    .w {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: top;
+      padding: 0 0.04em 0.12em 0;
+      margin-bottom: -0.12em;
+    }
+    .wi { display: inline-block; }
+    .js .hero .wi {
+      animation: wordUp 0.95s var(--ease) both;
+      animation-delay: calc(0.95s + var(--i, 0) * 55ms);
+    }
+    .js .hero-in {
+      animation: fadeUp 0.85s var(--ease) both;
+      animation-delay: calc(1.15s + var(--i, 0) * 90ms);
+    }
+    @keyframes wordUp { from { transform: translateY(112%); } to { transform: none; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+    /* ===== Onda Divisória Animada (.wave) ===== */
+    .wave {
+      display: block;
+      width: 100%;
+      height: 32px;
+      margin: 4px 0;
+      overflow: visible;
+    }
+    .wave path {
+      fill: none;
+      stroke: var(--coral);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      transition: stroke-dashoffset 1.8s var(--ease);
+    }
+    .wave.in path {
+      stroke-dashoffset: 0;
+    }
+
+    /* ===== Contadores Animados ([data-count]) ===== */
+    .stats-sec {
+      padding: 18px 0 36px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .stat-card {
+      padding: 20px 16px;
+      border-radius: 20px;
+      background: var(--papel);
+      border: 1px solid var(--borda);
+      box-shadow: 0 10px 26px -18px rgba(20, 35, 51, 0.2);
+    }
+    .stat-card b {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2rem, 6vw, 2.75rem);
+      line-height: 1;
+      color: var(--madeira);
+      letter-spacing: -0.03em;
+    }
+    .stat-card b em {
+      font-style: normal;
+      color: var(--coral);
+      font-size: 0.72em;
+      margin-left: 2px;
+    }
+    .stat-card > span {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--madeira-2);
+    }
+
+    /* ===== Faixa Marquee em Movimento ===== */
     .marquee-strip {
       background: var(--noite-deck);
       color: var(--linho);
@@ -397,6 +712,10 @@
       width: max-content;
       animation: tickerMove 28s linear infinite;
     }
+    @keyframes tickerMove {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
+    }
     .marquee-item {
       display: inline-flex;
       align-items: center;
@@ -407,7 +726,7 @@
       letter-spacing: 0.09em;
       text-transform: uppercase;
       white-space: nowrap;
-      color: rgba(247, 243, 235, 0.9);
+      color: rgba(247, 243, 235, 0.92);
     }
     .marquee-dot {
       width: 6px;
@@ -416,129 +735,203 @@
       background: var(--coral);
       flex-shrink: 0;
     }
-    .reveal-item {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: opacity, transform;
-    }
-    .reveal-item.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .feat-card, .rev-card, .loc-card {
-      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
-    }
-    .feat-card:hover, .rev-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--sombra);
-    }
-    .rating-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 44px;
-      padding: 6px 15px;
-      border-radius: 999px;
-      background: var(--papel);
-      border: 1px solid var(--borda);
-      font-size: 0.84rem;
-      font-weight: 600;
-      color: var(--madeira);
-    }
-    .rating-pill svg {
-      width: 15px;
-      height: 15px;
-      color: #D98218;
-      fill: currentColor;
-    }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.15rem, 6.2vw, 3.65rem);
-      font-weight: 700;
-      line-height: 1.04;
-      letter-spacing: -0.025em;
-      color: var(--madeira);
-    }
-    .hero-lead {
-      font-size: clamp(1rem, 2.2vw, 1.13rem);
-      color: var(--madeira-2);
-      max-width: 48ch;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      width: 100%;
-      padding-top: 4px;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 0 24px;
-      border-radius: 999px;
-      background: var(--coral);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.96rem;
-      box-shadow: 0 10px 24px -8px rgba(201, 70, 78, 0.45);
-      transition: transform 0.15s ease, background 0.2s ease;
-    }
-    .btn-primary:hover { background: #B0363E; }
-    .btn-primary:active { transform: scale(0.98); }
-    .btn-primary svg { width: 19px; height: 19px; flex-shrink: 0; }
 
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 999px;
-      background: var(--papel);
-      border: 1px solid var(--borda);
-      color: var(--madeira);
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: background 0.2s ease;
-    }
-    .btn-secondary:hover { background: var(--linho-2); }
-
-    /* Seções gerais */
+    /* ===== Seções Gerais + Revelação (.reveal e .clip) ===== */
     section {
-      padding: 64px 0;
+      padding: 68px 0;
+      position: relative;
     }
     .sec-head {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      margin-bottom: 32px;
-      max-width: 580px;
+      margin-bottom: 34px;
+      max-width: 600px;
     }
     .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-size: 0.76rem;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.14em;
       color: var(--coral);
     }
+    .eyebrow::before {
+      content: '';
+      width: 22px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--coral);
+    }
     .sec-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.75rem, 4.5vw, 2.55rem);
-      font-weight: 700;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
+      font-size: clamp(1.9rem, 5.2vw, 2.85rem);
+      text-wrap: balance;
+    }
+    .sec-title .serif {
+      color: var(--atlantico);
+      font-size: 1.05em;
     }
     .sec-sub {
       color: var(--madeira-2);
       font-size: 0.98rem;
+      max-width: 48ch;
     }
 
-    /* DIFERENCIAIS / EXPERIÊNCIA */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+      transition-delay: var(--d, 0ms);
+    }
+    .js .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+    .js .clip {
+      clip-path: inset(9% 6% 9% 6% round 24px);
+      transition: clip-path 1.25s var(--ease);
+    }
+    .js .clip.in {
+      clip-path: inset(0 round 24px);
+    }
+
+    /* ===== Trilha da Experiência na Praia da Reserva (.rail / .chain / .stops) ===== */
+    .exp-sec {
+      background: var(--noite-deck);
+      color: var(--linho);
+    }
+    .exp-sec .eyebrow { color: var(--sol-claro); }
+    .exp-sec .eyebrow::before { background: var(--sol); }
+    .exp-sec .sec-title { color: #fff; }
+    .exp-sec .sec-title .serif { color: var(--sol-claro); }
+    .exp-sec .sec-sub { color: rgba(247, 243, 235, 0.78); }
+
+    .route-grid {
+      display: grid;
+      gap: 32px;
+      align-items: center;
+    }
+    .rail {
+      position: relative;
+      padding-left: 44px;
+    }
+    .chain {
+      position: relative;
+      display: grid;
+      gap: 28px;
+    }
+    .chain-rail, .chain-line {
+      position: absolute;
+      left: -30px;
+      top: 10px;
+      bottom: 10px;
+      width: 2.5px;
+      border-radius: 2px;
+    }
+    .chain-rail {
+      background: repeating-linear-gradient(180deg, rgba(246, 213, 138, 0.28) 0 6px, transparent 6px 12px);
+    }
+    .chain-line {
+      background: linear-gradient(180deg, var(--sol), var(--coral));
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    .stops {
+      display: grid;
+      gap: 28px;
+    }
+    .stop {
+      position: relative;
+    }
+    .stop::before {
+      content: "";
+      position: absolute;
+      left: -40px;
+      top: 5px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--noite-deck);
+      border: 2.5px solid var(--sol-claro);
+      transition: background-color 0.4s var(--ease), transform 0.4s var(--spring), border-color 0.4s var(--ease);
+    }
+    .stop.on::before {
+      background: var(--sol);
+      border-color: var(--sol);
+      transform: scale(1.15);
+    }
+    .stop.end.on::before {
+      background: var(--coral);
+      border-color: var(--coral);
+    }
+    .stop small {
+      display: block;
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sol-claro);
+      margin-bottom: 3px;
+    }
+    .stop h3 {
+      font-size: clamp(1.3rem, 4.2vw, 1.65rem);
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .stop p {
+      font-size: 0.94rem;
+      color: rgba(247, 243, 235, 0.76);
+      max-width: 42ch;
+    }
+
+    .route-showcase {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .route-photo {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3.4;
+      background: var(--noite-deck-2);
+      box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.55);
+      cursor: zoom-in;
+    }
+    .route-photo img {
+      position: absolute;
+      inset: -7% 0;
+      width: 100%;
+      height: 114%;
+      object-fit: cover;
+      will-change: transform;
+    }
+    .route-tag {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(20, 35, 51, 0.84);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .route-tag svg {
+      width: 15px;
+      height: 15px;
+      color: var(--sol-claro);
+    }
+
+    /* ===== Diferenciais / Estrutura ===== */
     .features-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -547,16 +940,21 @@
     .feat-card {
       background: var(--papel);
       border: 1px solid var(--borda);
-      border-radius: var(--radius-md);
+      border-radius: 20px;
       padding: 22px;
       display: flex;
       align-items: flex-start;
       gap: 16px;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
+    }
+    .feat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sombra);
     }
     .feat-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
       background: var(--coral-claro);
       color: var(--coral);
       display: inline-flex;
@@ -570,98 +968,109 @@
     }
     .feat-icon svg { width: 22px; height: 22px; }
     .feat-body h3 {
-      font-family: var(--font-display);
-      font-size: 1.18rem;
-      font-weight: 700;
+      font-size: 1.22rem;
       margin-bottom: 4px;
-      letter-spacing: -0.01em;
     }
     .feat-body p {
-      font-size: 0.92rem;
+      font-size: 0.93rem;
       color: var(--madeira-2);
     }
 
-    /* GALERIA DE FOTOS REAIS */
+    /* ===== Galeria de Fotos Reais com Clip-Path + Parallax + Lightbox ===== */
     .galeria-sec {
       background: var(--linho-2);
     }
-    .galeria-track {
+    .galeria-grid {
       display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: 84%;
-      gap: 14px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-      padding-bottom: 6px;
+      grid-template-columns: 1fr;
+      gap: 16px;
     }
-    .galeria-track::-webkit-scrollbar { display: none; }
     .foto-card {
-      scroll-snap-align: start;
       position: relative;
-      border-radius: var(--radius-md);
+      border-radius: 24px;
       overflow: hidden;
       background: var(--noite-deck);
       aspect-ratio: 4 / 3.25;
       box-shadow: var(--sombra);
+      cursor: zoom-in;
     }
     .foto-card img {
+      position: absolute;
+      inset: -6% 0;
       width: 100%;
-      height: 100%;
+      height: 112%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      will-change: transform;
+      transition: filter 0.4s ease;
     }
-    .foto-card:hover img { transform: scale(1.03); }
+    .foto-card:hover img {
+      filter: brightness(1.04);
+    }
     .foto-tag {
       position: absolute;
       left: 12px;
       bottom: 12px;
       right: 12px;
+      z-index: 2;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 12px;
-      border-radius: 10px;
-      background: rgba(24, 35, 46, 0.84);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 14px;
+      background: rgba(20, 35, 51, 0.84);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: #fff;
       font-size: 0.82rem;
       font-weight: 600;
     }
+    .foto-tag span:last-child {
+      color: var(--sol-claro);
+      font-size: 0.76rem;
+    }
     .galeria-nota {
-      margin-top: 14px;
-      font-size: 0.8rem;
+      margin-top: 16px;
+      font-size: 0.82rem;
       color: var(--madeira-2);
+      font-weight: 500;
     }
 
-    /* SIMULADOR INTERATIVO WHATSAPP (sem preços) */
+    /* ===== Simulador Interativo Pro Max (#reservar) ===== */
     .sim-sec {
       background: var(--noite-deck);
       color: var(--linho);
     }
-    .sim-sec .eyebrow { color: #F4A261; }
+    .sim-sec .eyebrow { color: var(--sol-claro); }
+    .sim-sec .eyebrow::before { background: var(--sol); }
+    .sim-sec .sec-title { color: #fff; }
+    .sim-sec .sec-title .serif { color: var(--sol-claro); }
     .sim-sec .sec-sub { color: rgba(247, 243, 235, 0.78); }
-    .sim-box {
+
+    .planner {
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: var(--radius-lg);
-      padding: 24px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 28px;
+      padding: 24px 18px;
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
+      box-shadow: 0 32px 64px -28px rgba(0, 0, 0, 0.55);
+    }
+    .sim-controls {
+      display: grid;
+      gap: 22px;
     }
     .sim-group {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 10px;
     }
     .sim-label {
-      font-size: 0.82rem;
-      font-weight: 700;
+      font-size: 0.78rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: rgba(247, 243, 235, 0.8);
+      letter-spacing: 0.1em;
+      color: rgba(247, 243, 235, 0.82);
     }
     .chips {
       display: flex;
@@ -669,10 +1078,10 @@
       gap: 8px;
     }
     .chip {
-      min-height: 44px;
-      padding: 8px 15px;
+      min-height: 46px;
+      padding: 8px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
       background: rgba(255, 255, 255, 0.04);
       color: #fff;
       font-size: 0.88rem;
@@ -680,102 +1089,128 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: all 0.18s ease;
+      transition: all 0.2s var(--ease);
     }
-    .chip[aria-pressed="true"] {
+    .chip:active { transform: scale(0.96); }
+    .chip.active, .chip[aria-pressed="true"] {
       background: var(--coral);
       border-color: var(--coral);
       color: #fff;
+      font-weight: 700;
+      box-shadow: 0 8px 20px -6px rgba(216, 74, 82, 0.6);
     }
-    .sim-row {
+    .counters-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 10px;
     }
-    .stepper {
-      display: inline-flex;
+    .counter-box {
+      display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 12px;
-      padding: 4px 8px;
-      max-width: 220px;
+      min-height: 62px;
+      padding: 8px 10px 8px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
-    .step-btn {
+    .counter-box strong {
+      display: block;
+      font-size: 0.94rem;
+      color: #fff;
+    }
+    .counter-box small {
+      display: block;
+      font-size: 0.74rem;
+      color: rgba(247, 243, 235, 0.65);
+    }
+    .c-ctl {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .c-btn {
       width: 44px;
       height: 44px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
       color: #fff;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      place-items: center;
+      transition: background 0.2s, transform 0.15s;
     }
-    .step-btn:active { background: rgba(255, 255, 255, 0.22); }
-    .step-val {
-      font-weight: 700;
-      font-size: 1rem;
-      min-width: 84px;
+    .c-btn:active { background: var(--coral); transform: scale(0.92); }
+    .c-btn:disabled { opacity: 0.3; pointer-events: none; }
+    .c-val {
+      min-width: 32px;
       text-align: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: #fff;
+      display: inline-block;
+    }
+    .c-val.bump {
+      animation: bump 0.34s var(--spring);
+    }
+    @keyframes bump {
+      40% { transform: scale(1.35); color: var(--sol-claro); }
     }
     .date-input {
       min-height: 52px;
-      padding: 0 14px;
-      border-radius: 12px;
+      padding: 0 16px;
+      border-radius: 14px;
       background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       color: #fff;
       font-weight: 600;
       width: 100%;
-      max-width: 240px;
+      max-width: 280px;
       color-scheme: dark;
     }
     .sim-summary {
-      background: rgba(0, 0, 0, 0.26);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: var(--radius-md);
-      padding: 18px;
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 22px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 16px;
+      gap: 18px;
     }
     .sim-preview-title {
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #F4A261;
-      font-weight: 700;
-      margin-bottom: 6px;
+      letter-spacing: 0.1em;
+      color: var(--sol-claro);
+      font-weight: 800;
+      margin-bottom: 8px;
     }
     .sim-preview-text {
       font-size: 0.94rem;
       color: rgba(247, 243, 235, 0.92);
-      line-height: 1.45;
+      line-height: 1.5;
+      white-space: pre-line;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+    }
+    .sim-preview-text.bump {
+      animation: fadePulse 0.35s var(--ease);
+    }
+    @keyframes fadePulse {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
     }
     .sim-submit {
       width: 100%;
-      min-height: 54px;
-      border-radius: 999px;
-      background: var(--coral);
-      color: #fff;
-      font-weight: 800;
-      font-size: 0.98rem;
-      display: inline-flex;
-      align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 0 22px;
-      transition: transform 0.15s ease, filter 0.2s ease;
     }
-    .sim-submit:hover { filter: brightness(1.06); }
-    .sim-submit:active { transform: scale(0.98); }
-    .sim-submit svg { width: 20px; height: 20px; flex-shrink: 0; }
 
-    /* AVALIAÇÕES REAIS GOOGLE MAPS */
+    /* ===== Avaliações Reais Google Maps ===== */
     .reviews-top {
       display: flex;
       flex-wrap: wrap;
@@ -783,10 +1218,10 @@
       justify-content: space-between;
       gap: 16px;
       margin-bottom: 28px;
-      padding: 20px;
+      padding: 22px;
       background: var(--papel);
       border: 1px solid var(--borda);
-      border-radius: var(--radius-md);
+      border-radius: 22px;
     }
     .score-box {
       display: flex;
@@ -795,7 +1230,7 @@
     }
     .score-num {
       font-family: var(--font-display);
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       font-weight: 700;
       line-height: 1;
       color: var(--madeira);
@@ -803,10 +1238,10 @@
     .stars-row {
       display: flex;
       gap: 3px;
-      color: #D98218;
+      color: var(--sol);
       margin-bottom: 4px;
     }
-    .stars-row svg { width: 17px; height: 17px; fill: currentColor; }
+    .stars-row svg { width: 18px; height: 18px; fill: currentColor; }
     .score-meta {
       font-size: 0.85rem;
       color: var(--madeira-2);
@@ -817,13 +1252,14 @@
       align-items: center;
       gap: 8px;
       min-height: 44px;
-      padding: 0 16px;
+      padding: 0 18px;
       border-radius: 999px;
       border: 1px solid var(--borda);
       background: var(--linho);
       font-size: 0.86rem;
       font-weight: 700;
       color: var(--madeira);
+      transition: background 0.2s;
     }
     .maps-link:hover { background: var(--linho-2); }
     .reviews-grid {
@@ -834,15 +1270,20 @@
     .rev-card {
       background: var(--papel);
       border: 1px solid var(--borda);
-      border-radius: var(--radius-md);
-      padding: 20px;
+      border-radius: 22px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 14px;
+      gap: 16px;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
+    }
+    .rev-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sombra);
     }
     .rev-quote {
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       color: var(--madeira);
       font-style: italic;
     }
@@ -852,12 +1293,12 @@
       justify-content: space-between;
       font-size: 0.82rem;
       color: var(--madeira-2);
-      font-weight: 600;
+      font-weight: 700;
       border-top: 1px solid var(--borda);
-      padding-top: 10px;
+      padding-top: 12px;
     }
 
-    /* FAQ + LOCALIZAÇÃO */
+    /* ===== FAQ + Localização ===== */
     .info-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -871,13 +1312,13 @@
     details.faq-item {
       background: var(--papel);
       border: 1px solid var(--borda);
-      border-radius: var(--radius-md);
+      border-radius: 18px;
       padding: 4px 18px;
     }
     details.faq-item summary {
       list-style: none;
       cursor: pointer;
-      min-height: 52px;
+      min-height: 54px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -887,17 +1328,22 @@
     }
     details.faq-item summary::-webkit-details-marker { display: none; }
     .faq-plus {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: var(--linho);
+      color: var(--coral);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      transition: transform 0.2s ease;
+      font-weight: 800;
+      transition: transform 0.3s var(--spring), background 0.2s;
     }
-    details[open] .faq-plus { transform: rotate(45deg); }
+    details[open] .faq-plus {
+      transform: rotate(45deg);
+      background: var(--coral-claro);
+    }
     .faq-ans {
       padding: 0 0 16px;
       font-size: 0.92rem;
@@ -907,11 +1353,12 @@
     .loc-card {
       background: var(--papel);
       border: 1px solid var(--borda);
-      border-radius: var(--radius-lg);
+      border-radius: 24px;
       padding: 24px;
       display: flex;
       flex-direction: column;
       gap: 16px;
+      box-shadow: var(--sombra);
     }
     .loc-item {
       display: flex;
@@ -921,38 +1368,96 @@
     .loc-item svg {
       width: 20px;
       height: 20px;
-      color: var(--atlantico);
+      color: var(--coral);
       flex-shrink: 0;
       margin-top: 3px;
     }
     .loc-item strong {
       display: block;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--atlantico);
       margin-bottom: 2px;
     }
-    .loc-item span {
-      font-size: 0.9rem;
+    .loc-item span, .loc-item a {
+      font-size: 0.92rem;
       color: var(--madeira-2);
+      font-weight: 600;
     }
-    .loc-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 4px;
+    .map-box {
+      border-radius: 18px;
+      overflow: hidden;
+      height: 210px;
+      border: 1px solid var(--borda);
+      background: var(--linho-2);
+    }
+    .map-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
     }
 
-    /* RODAPÉ */
+    /* ===== Banner Final Cinematográfico ===== */
+    .final {
+      position: relative;
+      overflow: hidden;
+      min-height: 74svh;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      background: var(--noite-deck);
+      padding: 88px 0 64px;
+    }
+    .final-bg {
+      position: absolute;
+      inset: -8% 0;
+    }
+    .final-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      will-change: transform;
+    }
+    .final::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20, 35, 51, 0.25) 0%, rgba(20, 35, 51, 0.65) 55%, rgba(20, 35, 51, 0.94) 100%);
+    }
+    .final .wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+    }
+    .final h2 {
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      max-width: 15ch;
+      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.45);
+    }
+    .final h2 .serif {
+      color: var(--sol-claro);
+    }
+
+    /* ===== Rodapé ===== */
     footer {
-      border-top: 1px solid var(--borda);
-      padding: 36px 0 96px;
-      font-size: 0.86rem;
-      color: var(--madeira-2);
+      background: var(--noite-deck);
+      color: rgba(247, 243, 235, 0.72);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px 0 100px;
+      font-size: 0.88rem;
     }
     .foot-inner {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
     }
+    .foot-inner .brand-name { color: #fff; }
     .foot-links {
       display: flex;
       flex-wrap: wrap;
@@ -963,59 +1468,134 @@
       min-height: 44px;
       display: inline-flex;
       align-items: center;
+      transition: color 0.2s;
     }
-    .foot-links a:hover { color: var(--coral); }
+    .foot-links a:hover { color: var(--sol-claro); }
 
-    /* Botão flutuante WhatsApp (redondo, só ícone SVG) */
-    .wa-float {
+    /* ===== Botão Flutuante WhatsApp (.fab / .fab.away) ===== */
+    .fab {
       position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 95;
+      right: 16px;
+      bottom: calc(16px + env(safe-area-inset-bottom));
+      z-index: 90;
       width: 58px;
       height: 58px;
       border-radius: 50%;
-      background: #25D366;
+      background: var(--wa);
       color: #fff;
-      display: inline-flex;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 28px rgba(20, 35, 51, 0.4);
+      transition: transform 0.38s var(--spring), opacity 0.3s ease;
+    }
+    .fab svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+      position: relative;
+      z-index: 1;
+    }
+    .fab::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid var(--wa);
+      animation: ping 2.4s var(--ease) infinite;
+    }
+    @keyframes ping {
+      0% { transform: scale(1); opacity: 0.75; }
+      100% { transform: scale(1.55); opacity: 0; }
+    }
+    .fab:hover { transform: scale(1.06); }
+    .fab:active { transform: scale(0.95); }
+    .fab.away {
+      opacity: 0;
+      transform: scale(0.75);
+      pointer-events: none;
+    }
+
+    /* ===== Lightbox de Zoom nas Fotos Reais ===== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 140;
+      background: rgba(14, 24, 36, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 26px rgba(24, 35, 46, 0.32);
-      transition: transform 0.2s ease;
+      padding: 20px;
     }
-    .wa-float:hover { transform: scale(1.06); }
-    .wa-float:active { transform: scale(0.96); }
-    .wa-float svg { width: 28px; height: 28px; fill: currentColor; }
+    .lightbox.open {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 88svh;
+      border-radius: 16px;
+      object-fit: contain;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      font-size: 1.6rem;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+    }
 
-    /* Responsivo Desktop */
+    /* ===== Responsivo Tablet / Desktop ===== */
     @media (min-width: 768px) {
+      .wrap { padding: 0 28px; }
       .nav-links { display: flex; }
-      .hero { padding: 108px 0 64px; }
+      .hero { padding: 112px 0 56px; }
       .hero-grid {
         grid-template-columns: 1.02fr 1.15fr;
         gap: 44px;
       }
       .hero-copy { order: 1; }
       .hero-media { order: 2; aspect-ratio: 4 / 3.35; }
+      .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      .route-grid {
+        grid-template-columns: 1.05fr 1fr;
+        gap: 52px;
+      }
+      .route-showcase {
+        grid-template-columns: 1fr 1fr;
+      }
+      .route-showcase .route-photo:first-child {
+        grid-column: span 2;
+        aspect-ratio: 16 / 10;
+      }
       .features-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
-      .galeria-track {
-        grid-auto-flow: unset;
+      .galeria-grid {
         grid-template-columns: repeat(6, 1fr);
-        overflow: visible;
+        gap: 18px;
       }
       .foto-card:nth-child(1) { grid-column: span 3; }
       .foto-card:nth-child(2) { grid-column: span 3; }
       .foto-card:nth-child(3) { grid-column: span 2; }
       .foto-card:nth-child(4) { grid-column: span 2; }
       .foto-card:nth-child(5) { grid-column: span 2; }
-      .sim-box {
-        grid-template-columns: 1.35fr 0.95fr;
-        padding: 34px;
-        align-items: center;
+      .foto-card:nth-child(6) { grid-column: span 6; aspect-ratio: 21 / 8.5; }
+      .planner {
+        grid-template-columns: 1.3fr 0.95fr;
+        padding: 38px;
+        align-items: start;
       }
-      .sim-row { grid-template-columns: 1fr 1fr; }
-      .reviews-grid { grid-template-columns: repeat(3, 1fr); }
-      .info-grid { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
+      .counters-grid { grid-template-columns: 1fr 1fr; }
+      .sim-summary { position: sticky; top: 96px; }
+      .reviews-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .info-grid { grid-template-columns: 1.12fr 0.88fr; align-items: start; }
       .foot-inner {
         flex-direction: row;
         align-items: center;
@@ -1027,18 +1607,36 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
       }
+      .intro { display: none; }
+      .js .reveal { opacity: 1; transform: none; }
+      .js .clip { clip-path: none; }
+      .wave path { stroke-dashoffset: 0; }
     }
   </style>
 </head>
 <body>
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-  <!-- TOPBAR (enxuta: marca + 3 links + botão Reservar) -->
-  <header class="topbar" id="topbar">
-    <div class="wrap topbar-inner">
+  <!-- ABERTURA CINEMATOGRÁFICA (.intro) -->
+  <div class="intro" aria-hidden="true">
+    <div class="intro-in">
+      <img src="img/logo-cabana-da-reserva.svg" alt="" class="intro-logo" width="96" height="96" />
+      <b>Cabana <em>da Reserva</em></b>
+      <svg class="intro-wave" viewBox="0 0 156 20">
+        <path pathLength="1" d="M3 12 C 26 2, 52 20, 78 10 C 104 0, 130 18, 153 8" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- BARRA DE PROGRESSO (.progress) -->
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <!-- HEADER FLUTUANTE AUTO-HIDE (.nav-wrap) -->
+  <div class="nav-wrap" id="navWrap">
+    <header class="nav">
       <a href="#topo" class="brand" aria-label="Quiosque Cabana da Reserva - Início">
         <img src="img/logo-cabana-da-reserva.svg" alt="Logo Quiosque Cabana da Reserva" class="brand-logo" width="44" height="44" />
         <div class="brand-txt">
@@ -1048,17 +1646,18 @@
       </a>
 
       <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#experiencia">Experiência</a>
         <a href="#fotos">Fotos &amp; Pratos</a>
-        <a href="#reservar">Reservar Mesa</a>
-        <a href="#avaliacoes">Avaliações (4,5 ★)</a>
+        <a href="#reservar">Reservar</a>
+        <a href="#avaliacoes">4,5 ★ (696)</a>
       </nav>
 
-      <a href="https://wa.me/5521964266081?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20Quiosque%20Cabana%20da%20Reserva%20e%20quero%20fazer%20uma%20reserva." target="_blank" rel="noopener noreferrer" class="top-cta">
+      <a href="#reservar" class="nav-cta" data-mag>
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.82 14.01c-.24.68-1.41 1.3-1.95 1.38-.5.08-1.13.11-1.83-.11-.42-.13-.97-.31-1.66-.61-2.92-1.26-4.82-4.21-4.97-4.4-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.65-.15.27.1 1.7.8 1.99.95.29.15.48.22.56.34.07.12.07.7-.17 1.38z"/></svg>
         <span>Reservar</span>
       </a>
-    </div>
-  </header>
+    </header>
+  </div>
 
   <main id="topo">
     <!-- HERO -->
@@ -1067,10 +1666,10 @@
         <div class="hero-media">
           <picture>
             <source srcset="img/balanco-reserva-1080.webp 1080w, img/balanco-reserva.webp 2000w" sizes="(max-width: 767px) 94vw, 54vw" type="image/webp" />
-            <img src="img/balanco-reserva.webp" id="heroImg" alt="Balanço florido de frente para o mar no Quiosque Cabana da Reserva, Ilha 26 da Praia da Reserva, Barra da Tijuca" width="2000" height="1973" fetchpriority="high" />
+            <img src="img/balanco-reserva.webp" id="heroImg" data-lightbox alt="Balanço florido de frente para o mar no Quiosque Cabana da Reserva, Ilha 26 da Praia da Reserva, Barra da Tijuca" width="2000" height="1973" fetchpriority="high" />
           </picture>
           <div class="hero-emblem-badge">
-            <img src="img/logo-cabana-da-reserva.svg" alt="" width="34" height="34" aria-hidden="true" />
+            <img src="img/logo-cabana-da-reserva.svg" alt="" width="32" height="32" aria-hidden="true" />
             <span>Cabana da Reserva · Ilha 26</span>
           </div>
           <div class="hero-caption">
@@ -1080,20 +1679,50 @@
         </div>
 
         <div class="hero-copy">
-          <a href="#avaliacoes" class="rating-pill" aria-label="Nota 4,5 no Google com 696 avaliações">
+          <a href="#avaliacoes" class="rating-pill hero-in" style="--i:0" aria-label="Nota 4,5 no Google com 696 avaliações">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <span>4,5 no Google · 696 avaliações</span>
+            <span>4,5 ★ no Google · 696 avaliações</span>
           </a>
 
-          <h1>Seu refúgio pé na areia na Praia da Reserva.</h1>
-          <p class="hero-lead">Frutos do mar, picanha na chapa, drinks autorais, lounge coberto com vista livre para o mar e espaço perfeito para aniversários na Ilha 26.</p>
+          <h1 class="split">Seu refúgio <span class="serif">pé na areia</span> na Praia da Reserva.</h1>
+          <p class="hero-lead hero-in" style="--i:1">Frutos do mar, picanha na chapa, drinks autorais, lounge coberto com tendas de linho e espaço perfeito para aniversários na Ilha 26.</p>
 
-          <div class="hero-actions">
-            <a href="#reservar" class="btn-primary">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.82 14.01c-.24.68-1.41 1.3-1.95 1.38-.5.08-1.13.11-1.83-.11-.42-.13-.97-.31-1.66-.61-2.92-1.26-4.82-4.21-4.97-4.4-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.65-.15.27.1 1.7.8 1.99.95.29.15.48.22.56.34.07.12.07.7-.17 1.38z"/></svg>
+          <div class="hero-actions hero-in" style="--i:2">
+            <a href="#reservar" class="btn" data-mag>
               <span>Reservar mesa ou aniversário</span>
+              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i>
             </a>
-            <a href="#fotos" class="btn-secondary">Ver pratos e ambiente</a>
+            <a href="#fotos" class="btn-ghost">Ver pratos e ambiente</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ONDA DIVISÓRIA + CONTADORES ANIMADOS -->
+    <div class="wrap">
+      <svg class="wave" viewBox="0 0 1200 32" preserveAspectRatio="none" aria-hidden="true">
+        <path pathLength="1" d="M0 16 C 150 2, 300 30, 450 16 C 600 2, 750 30, 900 16 C 1050 2, 1125 24, 1200 16" />
+      </svg>
+    </div>
+
+    <section class="stats-sec" aria-label="Números do Quiosque Cabana da Reserva">
+      <div class="wrap">
+        <div class="stats-grid">
+          <div class="stat-card reveal">
+            <b><span data-count="4.5" data-dec="1">4,5</span><em>★</em></b>
+            <span>Nota oficial no Google Maps</span>
+          </div>
+          <div class="stat-card reveal" style="--d:70ms">
+            <b><span data-count="696">696</span><em>+</em></b>
+            <span>Avaliações reais de clientes</span>
+          </div>
+          <div class="stat-card reveal" style="--d:140ms">
+            <b>Ilha <span data-count="26">26</span></b>
+            <span>Praia da Reserva · Barra da Tijuca</span>
+          </div>
+          <div class="stat-card reveal" style="--d:210ms">
+            <b><span data-count="14.7" data-dec="1">14,7</span><em>mil</em></b>
+            <span>Seguidores @quiosquecabanadareserva</span>
           </div>
         </div>
       </div>
@@ -1119,17 +1748,94 @@
       </div>
     </div>
 
-    <!-- ESTRUTURA E GASTRONOMIA -->
+    <!-- TRILHA DA EXPERIÊNCIA NA PRAIA DA RESERVA (.rail / .chain / .stops) -->
+    <section id="experiencia" class="exp-sec">
+      <div class="wrap">
+        <div class="route-grid">
+          <div>
+            <div class="sec-head reveal">
+              <span class="eyebrow">Um dia na Ilha 26</span>
+              <h2 class="sec-title split">Do pé na areia ao <span class="serif">pôr do sol no deck.</span></h2>
+              <p class="sec-sub">Aberto todos os dias das 08h às 19h para você aproveitar cada momento na Praia da Reserva.</p>
+            </div>
+
+            <div class="rail" id="rail">
+              <div class="chain" id="chain">
+                <span class="chain-rail" aria-hidden="true"></span>
+                <span class="chain-line" id="chainLine" aria-hidden="true"></span>
+                <ol class="stops">
+                  <li class="stop start on">
+                    <small>Passo 01 · Chegada</small>
+                    <h3>Ilha 26 da Praia da Reserva</h3>
+                    <p>Estacionamento fácil na Av. Lúcio Costa, acessibilidade completa e recepção de frente para o mar aberto da Reserva.</p>
+                  </li>
+                  <li class="stop">
+                    <small>Passo 02 · Cenário</small>
+                    <h3>Fotos no balanço florido à beira-mar</h3>
+                    <p>Nosso famoso balanço instagramável na areia com a cerca rústica de eucalipto e as ondas da Barra ao fundo.</p>
+                  </li>
+                  <li class="stop">
+                    <small>Passo 03 · Gastronomia</small>
+                    <h3>Almoço sob as tendas de linho</h3>
+                    <p>Tábua de frutos do mar (camarão, peixe e lula), picanha na chapa fumegando, cerveja trincando e caipirinhas de frutas frescas.</p>
+                  </li>
+                  <li class="stop end">
+                    <small>Passo 04 · Entardecer</small>
+                    <h3>Pôr do sol inesquecível no deck</h3>
+                    <p>Fim de tarde dourado com música, brisa do mar, Área Kids para as crianças e comemorações de aniversário com amigos.</p>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="route-showcase">
+            <figure class="route-photo clip">
+              <picture>
+                <source srcset="img/lounge-vista-mar-1080.webp 820w, img/lounge-vista-mar.webp 1520w" sizes="(max-width: 767px) 92vw, 46vw" type="image/webp" />
+                <img src="img/lounge-vista-mar.webp" alt="Lounge coberto com tendas de linho claras e vista para o mar no Quiosque Cabana da Reserva" width="1520" height="2000" loading="lazy" decoding="async" data-par data-lightbox />
+              </picture>
+              <figcaption class="route-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                <span>Lounge das Tendas de Linho</span>
+              </figcaption>
+            </figure>
+
+            <figure class="route-photo clip">
+              <picture>
+                <source srcset="img/petiscos-drinks-1080.webp 1080w, img/petiscos-drinks.webp 2000w" sizes="(max-width: 767px) 92vw, 24vw" type="image/webp" />
+                <img src="img/petiscos-drinks.webp" alt="Tábua de frutos do mar com caipirinhas no Quiosque Cabana da Reserva" width="2000" height="1634" loading="lazy" decoding="async" data-par data-lightbox />
+              </picture>
+              <figcaption class="route-tag">
+                <span>Tábua do Mar &amp; Drinks</span>
+              </figcaption>
+            </figure>
+
+            <figure class="route-photo clip">
+              <picture>
+                <source srcset="img/pordosol-deck-1080.webp 1080w, img/pordosol-deck.webp 2000w" sizes="(max-width: 767px) 92vw, 24vw" type="image/webp" />
+                <img src="img/pordosol-deck.webp" alt="Pôr do sol visto do deck do Quiosque Cabana da Reserva" width="2000" height="1320" loading="lazy" decoding="async" data-par data-lightbox />
+              </picture>
+              <figcaption class="route-tag">
+                <span>Pôr do Sol no Deck</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESTRUTURA E DIFERENCIAIS -->
     <section id="estrutura">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head reveal">
           <span class="eyebrow">Ilha 26 · Barra da Tijuca</span>
-          <h2 class="sec-title">Gastronomia, brisa do mar e estrutura completa.</h2>
-          <p class="sec-sub">Aberto todos os dias das 8h às 19h, do café da manhã ao pôr do sol na Reserva.</p>
+          <h2 class="sec-title split">Gastronomia, brisa do mar e <span class="serif">estrutura completa.</span></h2>
+          <p class="sec-sub">Do café da manhã pé na areia às comemorações de aniversário no nosso lounge coberto.</p>
         </div>
 
         <div class="features-grid">
-          <article class="feat-card">
+          <article class="feat-card reveal">
             <div class="feat-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
             </div>
@@ -1139,7 +1845,7 @@
             </div>
           </article>
 
-          <article class="feat-card">
+          <article class="feat-card reveal" style="--d:70ms">
             <div class="feat-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/></svg>
             </div>
@@ -1149,7 +1855,7 @@
             </div>
           </article>
 
-          <article class="feat-card">
+          <article class="feat-card reveal" style="--d:140ms">
             <div class="feat-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             </div>
@@ -1159,7 +1865,7 @@
             </div>
           </article>
 
-          <article class="feat-card">
+          <article class="feat-card reveal" style="--d:210ms">
             <div class="feat-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12a10.06 10.06 1 0 0-20 0Z"/><path d="M12 12v8a2 2 0 0 0 4 0"/><path d="M12 2v1"/></svg>
             </div>
@@ -1172,20 +1878,20 @@
       </div>
     </section>
 
-    <!-- FOTOS REAIS -->
+    <!-- GALERIA DE FOTOS REAIS COM CLIP-PATH + PARALLAX + LIGHTBOX -->
     <section id="fotos" class="galeria-sec">
       <div class="wrap">
-        <div class="sec-head">
-          <span class="eyebrow">Fotos reais · Ilha 26</span>
-          <h2 class="sec-title">Pratos fartos e vista livre para a Praia da Reserva.</h2>
-          <p class="sec-sub">Deslize no celular para ver as tábuas do mar, a picanha na chapa e o nosso deck coberto.</p>
+        <div class="sec-head reveal">
+          <span class="eyebrow">Fotos 100% reais · Ilha 26</span>
+          <h2 class="sec-title split">Pratos fartos e <span class="serif">vista livre para o mar.</span></h2>
+          <p class="sec-sub">Toque em qualquer foto para ampliar em tela cheia e conhecer o ambiente real da Cabana da Reserva.</p>
         </div>
 
-        <div class="galeria-track" role="region" aria-label="Galeria de fotos reais do Quiosque Cabana da Reserva">
-          <figure class="foto-card">
+        <div class="galeria-grid" role="region" aria-label="Galeria de fotos reais do Quiosque Cabana da Reserva">
+          <figure class="foto-card clip">
             <picture>
-              <source srcset="img/petiscos-drinks-1080.webp 1080w, img/petiscos-drinks.webp 2000w" sizes="(max-width: 767px) 84vw, 48vw" type="image/webp" />
-              <img src="img/petiscos-drinks.webp" alt="Tábua de camarão, iscas de peixe, anéis de lula, fritas e caipirinhas de abacaxi e limão no Quiosque Cabana da Reserva" width="2000" height="1634" />
+              <source srcset="img/petiscos-drinks-1080.webp 1080w, img/petiscos-drinks.webp 2000w" sizes="(max-width: 767px) 92vw, 48vw" type="image/webp" />
+              <img src="img/petiscos-drinks.webp" alt="Tábua de camarão, iscas de peixe, anéis de lula, fritas e caipirinhas de abacaxi e limão no Quiosque Cabana da Reserva" width="2000" height="1634" loading="lazy" decoding="async" data-par data-lightbox />
             </picture>
             <figcaption class="foto-tag">
               <span>Tábua do Mar &amp; Caipirinhas</span>
@@ -1193,21 +1899,21 @@
             </figcaption>
           </figure>
 
-          <figure class="foto-card">
+          <figure class="foto-card clip">
             <picture>
-              <source srcset="img/lounge-vista-mar-1080.webp 820w, img/lounge-vista-mar.webp 1520w" sizes="(max-width: 767px) 84vw, 48vw" type="image/webp" />
-              <img src="img/lounge-vista-mar.webp" alt="Lounge coberto com tendas claras, mesas para grupos e vista para o mar da Praia da Reserva" width="1520" height="2000" />
+              <source srcset="img/lounge-vista-mar-1080.webp 820w, img/lounge-vista-mar.webp 1520w" sizes="(max-width: 767px) 92vw, 48vw" type="image/webp" />
+              <img src="img/lounge-vista-mar.webp" alt="Lounge coberto com tendas claras, mesas para grupos e vista para o mar da Praia da Reserva" width="1520" height="2000" loading="lazy" decoding="async" data-par data-lightbox />
             </picture>
             <figcaption class="foto-tag">
-              <span>Lounge Coberto</span>
+              <span>Lounge das Tendas</span>
               <span>Ideal para aniversários</span>
             </figcaption>
           </figure>
 
-          <figure class="foto-card">
+          <figure class="foto-card clip">
             <picture>
-              <source srcset="img/picanha-chapa-1080.webp 858w, img/picanha-chapa.webp 1272w" sizes="(max-width: 767px) 84vw, 32vw" type="image/webp" />
-              <img src="img/picanha-chapa.webp" alt="Picanha na chapa com fritas, pão de alho, arroz, farofa e vinagrete" width="1272" height="1600" />
+              <source srcset="img/picanha-chapa-1080.webp 858w, img/picanha-chapa.webp 1272w" sizes="(max-width: 767px) 92vw, 32vw" type="image/webp" />
+              <img src="img/picanha-chapa.webp" alt="Picanha na chapa com fritas, pão de alho, arroz, farofa e vinagrete" width="1272" height="1600" loading="lazy" decoding="async" data-par data-lightbox />
             </picture>
             <figcaption class="foto-tag">
               <span>Picanha na Chapa</span>
@@ -1215,10 +1921,10 @@
             </figcaption>
           </figure>
 
-          <figure class="foto-card">
+          <figure class="foto-card clip">
             <picture>
-              <source srcset="img/pordosol-deck-1080.webp 1080w, img/pordosol-deck.webp 2000w" sizes="(max-width: 767px) 84vw, 32vw" type="image/webp" />
-              <img src="img/pordosol-deck.webp" alt="Entardecer rosado visto das mesas do deck do Quiosque Cabana da Reserva" width="2000" height="1320" />
+              <source srcset="img/pordosol-deck-1080.webp 1080w, img/pordosol-deck.webp 2000w" sizes="(max-width: 767px) 92vw, 32vw" type="image/webp" />
+              <img src="img/pordosol-deck.webp" alt="Entardecer rosado visto das mesas do deck do Quiosque Cabana da Reserva" width="2000" height="1320" loading="lazy" decoding="async" data-par data-lightbox />
             </picture>
             <figcaption class="foto-tag">
               <span>Fim de Tarde no Deck</span>
@@ -1226,92 +1932,127 @@
             </figcaption>
           </figure>
 
-          <figure class="foto-card">
+          <figure class="foto-card clip">
             <picture>
-              <source srcset="img/orla-reserva-1080.webp 1012w, img/orla-reserva.webp 1875w" sizes="(max-width: 767px) 84vw, 32vw" type="image/webp" />
-              <img src="img/orla-reserva.webp" alt="Cerca rústica de eucalipto do deck de frente para o mar da Praia da Reserva" width="1875" height="2000" />
+              <source srcset="img/orla-reserva-1080.webp 1012w, img/orla-reserva.webp 1875w" sizes="(max-width: 767px) 92vw, 32vw" type="image/webp" />
+              <img src="img/orla-reserva.webp" alt="Cerca rústica de eucalipto do deck de frente para o mar da Praia da Reserva" width="1875" height="2000" loading="lazy" decoding="async" data-par data-lightbox />
             </picture>
             <figcaption class="foto-tag">
-              <span>Pé na Areia · Ilha 26</span>
-              <span>Barra da Tijuca, RJ</span>
+              <span>Cerca Rústica Vista Mar</span>
+              <span>Ilha 26 · Barra da Tijuca</span>
+            </figcaption>
+          </figure>
+
+          <figure class="foto-card clip">
+            <picture>
+              <source srcset="img/balanco-reserva-1080.webp 1080w, img/balanco-reserva.webp 2000w" sizes="(max-width: 767px) 92vw, 96vw" type="image/webp" />
+              <img src="img/balanco-reserva.webp" alt="Balanço florido na areia de frente para o mar no Quiosque Cabana da Reserva" width="2000" height="1973" loading="lazy" decoding="async" data-par data-lightbox />
+            </picture>
+            <figcaption class="foto-tag">
+              <span>Balanço Florido na Areia</span>
+              <span>Cartão-postal da Cabana da Reserva</span>
             </figcaption>
           </figure>
         </div>
-        <p class="galeria-nota">Fotos reais registradas no Quiosque Cabana da Reserva (Google Maps).</p>
+        <p class="galeria-nota">Fotos reais registradas no Quiosque Cabana da Reserva — Ilha 26, Praia da Reserva (RJ).</p>
       </div>
     </section>
 
-    <!-- SIMULADOR DE RESERVA / ANIVERSÁRIO WHATSAPP -->
+    <!-- SIMULADOR INTERATIVO PRO MAX (#reservar) -->
     <section id="reservar" class="sim-sec">
       <div class="wrap">
-        <div class="sec-head">
-          <span class="eyebrow">Reservas &amp; Eventos</span>
-          <h2 class="sec-title">Garanta sua mesa ou comemore seu aniversário.</h2>
-          <p class="sec-sub">Selecione o tipo de reserva e o número de convidados para enviar direto no WhatsApp da Cabana.</p>
+        <div class="sec-head reveal">
+          <span class="eyebrow">Reservas &amp; Aniversários</span>
+          <h2 class="sec-title split">Monte sua reserva e chame <span class="serif">no WhatsApp.</span></h2>
+          <p class="sec-sub">Escolha a ocasião, o espaço preferido e o número de convidados para enviar direto à equipe da Cabana.</p>
         </div>
 
-        <div class="sim-box">
-          <div class="sim-controls" style="display:flex; flex-direction:column; gap:20px;">
+        <div class="planner reveal">
+          <div class="sim-controls">
             <div class="sim-group">
-              <span class="sim-label">1. O que você deseja reservar?</span>
-              <div class="chips" role="group" aria-label="Tipo de reserva">
-                <button type="button" class="chip js-local" data-val="Mesa no lounge coberto" aria-pressed="true">Mesa no lounge coberto</button>
-                <button type="button" class="chip js-local" data-val="Comemoração de aniversário / grupo" aria-pressed="false">Aniversário / Grupo</button>
-                <button type="button" class="chip js-local" data-val="Mesa pé na areia" aria-pressed="false">Mesa pé na areia</button>
+              <span class="sim-label">1. Qual é a ocasião?</span>
+              <div class="chips" data-g="ocasiao" role="group" aria-label="Ocasião da reserva">
+                <button type="button" class="chip active" data-v="Almoço à Beira-Mar" aria-pressed="true">Almoço à Beira-Mar</button>
+                <button type="button" class="chip" data-v="Aniversário / Comemoração" aria-pressed="false">Aniversário / Comemoração</button>
+                <button type="button" class="chip" data-v="Pôr do Sol &amp; Drinks" aria-pressed="false">Pôr do Sol &amp; Drinks</button>
               </div>
             </div>
 
             <div class="sim-group">
-              <span class="sim-label">2. O que pretende aproveitar? (pode marcar mais de um)</span>
-              <div class="chips" role="group" aria-label="Interesses">
-                <button type="button" class="chip js-item" data-val="Frutos do mar e petiscos" aria-pressed="true">Frutos do mar e petiscos</button>
-                <button type="button" class="chip js-item" data-val="Almoço / Picanha na chapa" aria-pressed="false">Almoço / Picanha na chapa</button>
-                <button type="button" class="chip js-item" data-val="Drinks e cerveja" aria-pressed="true">Drinks e cerveja</button>
-                <button type="button" class="chip js-item" data-val="Café da manhã" aria-pressed="false">Café da manhã</button>
+              <span class="sim-label">2. Espaço preferido</span>
+              <div class="chips" data-g="espaco" role="group" aria-label="Espaço preferido">
+                <button type="button" class="chip active" data-v="Lounge das Tendas" aria-pressed="true">Lounge das Tendas</button>
+                <button type="button" class="chip" data-v="Deck Vista Mar" aria-pressed="false">Deck Vista Mar</button>
+                <button type="button" class="chip" data-v="Mesas na Areia" aria-pressed="false">Mesas na Areia</button>
               </div>
             </div>
 
-            <div class="sim-row">
-              <div class="sim-group">
-                <span class="sim-label">3. Quantas pessoas?</span>
-                <div class="stepper">
-                  <button type="button" class="step-btn" id="stepMinus" aria-label="Diminuir número de pessoas">−</button>
-                  <span class="step-val" id="stepCount">6 pessoas</span>
-                  <button type="button" class="step-btn" id="stepPlus" aria-label="Aumentar número de pessoas">+</button>
+            <div class="sim-group">
+              <span class="sim-label">3. Quantas pessoas?</span>
+              <div class="counters-grid">
+                <div class="counter-box">
+                  <div>
+                    <strong>Adultos</strong>
+                    <small>Acima de 12 anos</small>
+                  </div>
+                  <div class="c-ctl">
+                    <button type="button" class="c-btn" data-c="adultos" data-d="-1" aria-label="Diminuir adultos">−</button>
+                    <output class="c-val" id="val-adultos">6</output>
+                    <button type="button" class="c-btn" data-c="adultos" data-d="1" aria-label="Aumentar adultos">+</button>
+                  </div>
+                </div>
+
+                <div class="counter-box">
+                  <div>
+                    <strong>Crianças</strong>
+                    <small>Espaço com Área Kids</small>
+                  </div>
+                  <div class="c-ctl">
+                    <button type="button" class="c-btn" data-c="criancas" data-d="-1" aria-label="Diminuir crianças">−</button>
+                    <output class="c-val" id="val-criancas">0</output>
+                    <button type="button" class="c-btn" data-c="criancas" data-d="1" aria-label="Aumentar crianças">+</button>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div class="sim-group">
-                <label class="sim-label" for="simDate">4. Data desejada (opcional)</label>
-                <input type="date" id="simDate" class="date-input" />
-              </div>
+            <div class="sim-group">
+              <label class="sim-label" for="simDate">4. Data desejada (opcional)</label>
+              <input type="date" id="simDate" class="date-input" />
             </div>
           </div>
 
-          <div class="sim-summary">
+          <aside class="sim-summary">
             <div>
-              <div class="sim-preview-title">Prévia da mensagem</div>
-              <p class="sim-preview-text" id="waPreviewText">Olá! Vim pelo site do Quiosque Cabana da Reserva. Quero consultar disponibilidade de Mesa no lounge coberto para 6 pessoas (Frutos do mar e petiscos, Drinks e cerveja).</p>
+              <div class="sim-preview-title">Mensagem pronta para envio</div>
+              <div class="sim-preview-text" id="waPreviewText" aria-live="polite"></div>
             </div>
 
-            <a href="https://wa.me/5521964266081" target="_blank" rel="noopener noreferrer" class="sim-submit" id="waSubmitBtn">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.82 14.01c-.24.68-1.41 1.3-1.95 1.38-.5.08-1.13.11-1.83-.11-.42-.13-.97-.31-1.66-.61-2.92-1.26-4.82-4.21-4.97-4.4-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.65-.15.27.1 1.7.8 1.99.95.29.15.48.22.56.34.07.12.07.7-.17 1.38z"/></svg>
+            <a href="https://wa.me/5521964266081" target="_blank" rel="noopener noreferrer" class="btn sim-submit" id="waSubmitBtn" data-mag>
               <span>Enviar no WhatsApp (21) 96426-6081</span>
+              <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i>
             </a>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
+
+    <!-- ONDA DIVISÓRIA -->
+    <div class="wrap">
+      <svg class="wave" viewBox="0 0 1200 32" preserveAspectRatio="none" aria-hidden="true">
+        <path pathLength="1" d="M0 16 C 150 30, 300 2, 450 16 C 600 30, 750 2, 900 16 C 1050 30, 1125 8, 1200 16" />
+      </svg>
+    </div>
 
     <!-- AVALIAÇÕES REAIS DO GOOGLE -->
     <section id="avaliacoes">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head reveal">
           <span class="eyebrow">Aprovado por quem frequenta</span>
-          <h2 class="sec-title">Quase 700 avaliações reais no Google Maps.</h2>
+          <h2 class="sec-title split">Quase 700 avaliações reais <span class="serif">no Google Maps.</span></h2>
         </div>
 
-        <div class="reviews-top">
+        <div class="reviews-top reveal">
           <div class="score-box">
             <span class="score-num">4,5</span>
             <div>
@@ -1333,7 +2074,7 @@
         </div>
 
         <div class="reviews-grid">
-          <article class="rev-card">
+          <article class="rev-card reveal">
             <p class="rev-quote">“Fiz a comemoração do meu aniversário nesse ambiente sensacional e não podia ter outro resultado: perfeição. Atendimento e recepção maravilhosos, comida ótima e o visual dispensa comentários.”</p>
             <div class="rev-author">
               <span>Jéssica Conceição</span>
@@ -1341,7 +2082,7 @@
             </div>
           </article>
 
-          <article class="rev-card">
+          <article class="rev-card reveal" style="--d:90ms">
             <p class="rev-quote">“Fiz uma reserva no quiosque para comemorar o aniversário da minha filha e gostaria de agradecer ao Rodrigo pelo excelente atendimento desde o primeiro contato e também a toda a sua equipe.”</p>
             <div class="rev-author">
               <span>Andrea Lopes</span>
@@ -1349,7 +2090,7 @@
             </div>
           </article>
 
-          <article class="rev-card">
+          <article class="rev-card reveal" style="--d:180ms">
             <p class="rev-quote">“Realizei a comemoração do meu aniversário no local e foi tudo impecável, desde a conversa de organização até o dia do evento onde a equipe do local e seu excelente serviço tornou o momento especial.”</p>
             <div class="rev-author">
               <span>Augusta Mancini</span>
@@ -1364,13 +2105,13 @@
     <section id="localizacao">
       <div class="wrap info-grid">
         <div>
-          <div class="sec-head" style="margin-bottom:20px;">
+          <div class="sec-head reveal" style="margin-bottom:20px;">
             <span class="eyebrow">Perguntas frequentes</span>
-            <h2 class="sec-title">Tudo sobre a Cabana da Reserva.</h2>
+            <h2 class="sec-title split">Tudo sobre a <span class="serif">Cabana da Reserva.</span></h2>
           </div>
 
           <div class="faq-list">
-            <details class="faq-item" open>
+            <details class="faq-item reveal" open>
               <summary>
                 <span>Onde fica exatamente o Quiosque Cabana da Reserva?</span>
                 <span class="faq-plus" aria-hidden="true">+</span>
@@ -1378,7 +2119,7 @@
               <div class="faq-ans">Ficamos na Av. Lúcio Costa, S/N — Ilha 26 da Praia da Reserva, Barra da Tijuca, Rio de Janeiro - RJ (CEP 22795-006).</div>
             </details>
 
-            <details class="faq-item">
+            <details class="faq-item reveal" style="--d:60ms">
               <summary>
                 <span>Como faço para reservar aniversário ou mesa para grupo?</span>
                 <span class="faq-plus" aria-hidden="true">+</span>
@@ -1386,7 +2127,7 @@
               <div class="faq-ans">Basta usar o simulador acima ou chamar direto no WhatsApp (21) 96426-6081 informando a data e o número de convidados para separarmos seu espaço no lounge coberto.</div>
             </details>
 
-            <details class="faq-item">
+            <details class="faq-item reveal" style="--d:120ms">
               <summary>
                 <span>Qual o horário de funcionamento?</span>
                 <span class="faq-plus" aria-hidden="true">+</span>
@@ -1394,7 +2135,7 @@
               <div class="faq-ans">Funcionamos todos os dias a partir das 08h até o pôr do sol (18h às 19h).</div>
             </details>
 
-            <details class="faq-item">
+            <details class="faq-item reveal" style="--d:180ms">
               <summary>
                 <span>Tem espaço para crianças e acessibilidade?</span>
                 <span class="faq-plus" aria-hidden="true">+</span>
@@ -1404,43 +2145,63 @@
           </div>
         </div>
 
-        <aside class="loc-card" aria-label="Endereço e contato">
+        <aside class="loc-card reveal" aria-label="Endereço e contato">
           <div class="sec-head" style="margin-bottom:4px;">
             <span class="eyebrow">Como chegar</span>
-            <h3 style="font-family:var(--font-display); font-size:1.5rem;">Ilha 26 · Praia da Reserva</h3>
+            <h3 style="font-size:1.6rem;">Ilha 26 · Praia da Reserva</h3>
           </div>
 
           <div class="loc-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <div>
               <strong>Endereço</strong>
-              <span>Av. Lúcio Costa, S/N — Ilha 26, Praia da Reserva, Barra da Tijuca, Rio de Janeiro - RJ · 22795-006</span>
+              <span>Av. Lúcio Costa, S/N — Ilha 26, Praia da Reserva, Barra da Tijuca, Rio de Janeiro - RJ · CEP 22795-006</span>
             </div>
           </div>
 
           <div class="loc-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             <div>
-              <strong>Horário de atendimento</strong>
-              <span>Todos os dias: 08h às 19h</span>
+              <strong>Horário de funcionamento</strong>
+              <span>Aberto todos os dias: das 08h às 18h/19h</span>
             </div>
           </div>
 
           <div class="loc-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             <div>
-              <strong>WhatsApp / Reservas</strong>
-              <span>(21) 96426-6081</span>
+              <strong>WhatsApp &amp; Instagram</strong>
+              <span><a href="https://wa.me/5521964266081" target="_blank" rel="noopener">(21) 96426-6081</a> · <a href="https://www.instagram.com/quiosquecabanadareserva/" target="_blank" rel="noopener">@quiosquecabanadareserva</a></span>
             </div>
           </div>
 
-          <div class="loc-actions">
-            <a href="https://www.google.com/maps/dir/?api=1&destination=-23.0114148,-43.3743447" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width:100%;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-              <span>Traçar rota no Google Maps</span>
-            </a>
+          <div class="map-box">
+            <iframe title="Mapa do Quiosque Cabana da Reserva na Ilha 26 da Praia da Reserva" loading="lazy" src="https://maps.google.com/maps?q=-23.0114148,-43.3743447&z=15&output=embed"></iframe>
           </div>
+
+          <a href="https://www.google.com/maps/dir/?api=1&destination=-23.0114148,-43.3743447" target="_blank" rel="noopener noreferrer" class="btn navy" style="width:100%;" data-mag>
+            <span>Traçar rota no Google Maps</span>
+            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></i>
+          </a>
         </aside>
+      </div>
+    </section>
+
+    <!-- BANNER FINAL CINEMATOGRÁFICO -->
+    <section class="final" id="despedida">
+      <div class="final-bg" aria-hidden="true">
+        <picture>
+          <source srcset="img/pordosol-deck-1080.webp 1080w, img/pordosol-deck.webp 2000w" sizes="100vw" type="image/webp" />
+          <img src="img/pordosol-deck.webp" alt="" width="2000" height="1320" loading="lazy" decoding="async" data-final />
+        </picture>
+      </div>
+      <div class="wrap">
+        <span class="eyebrow reveal" style="color:var(--sol-claro);">Ilha 26 · Praia da Reserva</span>
+        <h2 class="split">Sua mesa de frente para o mar <span class="serif">está esperando.</span></h2>
+        <a href="#reservar" class="btn reveal" data-mag>
+          <span>Garantir minha reserva agora</span>
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i>
+        </a>
       </div>
     </section>
   </main>
@@ -1449,146 +2210,392 @@
   <footer>
     <div class="wrap foot-inner">
       <div class="brand">
-        <img src="img/logo-cabana-da-reserva.svg" alt="Logo Quiosque Cabana da Reserva" class="brand-logo" width="36" height="36" />
+        <img src="img/logo-cabana-da-reserva.svg" alt="Logo Quiosque Cabana da Reserva" class="brand-logo" width="40" height="40" />
         <div class="brand-txt">
           <span class="brand-name">Quiosque Cabana da Reserva</span>
-          <span>Av. Lúcio Costa, S/N — Ilha 26, Barra da Tijuca, Rio de Janeiro-RJ</span>
+          <span>Av. Lúcio Costa, S/N — Ilha 26, Praia da Reserva, Barra da Tijuca, Rio de Janeiro - RJ</span>
         </div>
       </div>
 
       <div class="foot-links">
         <a href="https://www.instagram.com/quiosquecabanadareserva/" target="_blank" rel="noopener noreferrer">Instagram @quiosquecabanadareserva</a>
-        <a href="https://www.google.com/maps/place/?q=place_id:ChIJCxQ136nbmwARh7PDzLxBpqg" target="_blank" rel="noopener noreferrer">Google Maps</a>
+        <a href="https://www.google.com/maps/place/?q=place_id:ChIJCxQ136nbmwARh7PDzLxBpqg" target="_blank" rel="noopener noreferrer">Google Maps (4,5 ★)</a>
         <a href="https://wa.me/5521964266081" target="_blank" rel="noopener noreferrer">WhatsApp (21) 96426-6081</a>
       </div>
     </div>
   </footer>
 
-  <!-- BOTÃO FLUTUANTE WHATSAPP -->
-  <a href="https://wa.me/5521964266081?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20Quiosque%20Cabana%20da%20Reserva%20e%20quero%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Falar com Quiosque Cabana da Reserva no WhatsApp">
+  <!-- BOTÃO FLUTUANTE WHATSAPP (.fab / .fab.away) -->
+  <a href="https://wa.me/5521964266081?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20Quiosque%20Cabana%20da%20Reserva%20e%20quero%20fazer%20uma%20reserva." target="_blank" rel="noopener noreferrer" class="fab" id="fab" aria-label="Falar com Quiosque Cabana da Reserva no WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.82 14.01c-.24.68-1.41 1.3-1.95 1.38-.5.08-1.13.11-1.83-.11-.42-.13-.97-.31-1.66-.61-2.92-1.26-4.82-4.21-4.97-4.4-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.73-.85.92-1.14.19-.29.39-.24.65-.15.27.1 1.7.8 1.99.95.29.15.48.22.56.34.07.12.07.7-.17 1.38z"/></svg>
   </a>
 
+  <!-- LIGHTBOX DE ZOOM NAS FOTOS REAIS -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Fechar foto ampliada">×</button>
+    <img src="" alt="Foto ampliada do Quiosque Cabana da Reserva" id="lightboxImg" />
+  </div>
+
+  <!-- SCRIPTS CDN (GSAP + ScrollTrigger + Lenis Smooth Scroll) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+
   <script>
-    (function () {
-      // Topbar auto-hide + barra de progresso + parallax suave no hero
-      var topbar = document.getElementById('topbar');
-      var scrollProgress = document.getElementById('scrollProgress');
-      var heroImg = document.getElementById('heroImg');
+    document.addEventListener('DOMContentLoaded', function () {
       var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var lastY = window.scrollY || 0;
 
-      window.addEventListener('scroll', function () {
-        var currY = window.scrollY || 0;
-        if (currY > 120 && currY > lastY + 8) {
-          topbar.classList.add('is-hidden');
-        } else if (currY < lastY - 8 || currY <= 80) {
-          topbar.classList.remove('is-hidden');
-        }
-        lastY = currY;
-
-        if (scrollProgress) {
-          var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-          var ratio = Math.min(1, Math.max(0, currY / maxScroll));
-          scrollProgress.style.transform = 'scaleX(' + ratio.toFixed(4) + ')';
-        }
-        if (heroImg && !reduceMotion && currY < 700) {
-          heroImg.style.transform = 'translate3d(0,' + (currY * 0.05).toFixed(1) + 'px,0) scale(1.03)';
-        }
-      }, { passive: true });
-
-      // Scroll reveal fluido nas seções e cartões
-      var revealTargets = document.querySelectorAll('.sec-head, .feat-card, .foto-card, .sim-box, .reviews-top, .rev-card, .faq-item, .loc-card');
-      revealTargets.forEach(function (el, idx) {
-        el.classList.add('reveal-item');
-        el.style.transitionDelay = ((idx % 4) * 55) + 'ms';
-      });
-      if ('IntersectionObserver' in window && !reduceMotion) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              io.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-        revealTargets.forEach(function (el) { io.observe(el); });
-      } else {
-        revealTargets.forEach(function (el) { el.classList.add('is-visible'); });
-      }
-
-      // Simulador de reserva no WhatsApp
-      var localBtns = document.querySelectorAll('.js-local');
-      var itemBtns = document.querySelectorAll('.js-item');
-      var stepMinus = document.getElementById('stepMinus');
-      var stepPlus = document.getElementById('stepPlus');
-      var stepCount = document.getElementById('stepCount');
+      // ---------- 1. Simulador Interativo Pro Max (#reservar) ----------
+      var counts = { adultos: 6, criancas: 0 };
       var simDate = document.getElementById('simDate');
       var previewText = document.getElementById('waPreviewText');
       var submitBtn = document.getElementById('waSubmitBtn');
 
-      var people = 6;
+      if (simDate) {
+        var today = new Date();
+        simDate.min = new Date(today - today.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
+      }
+
+      function getActiveChip(groupName) {
+        var el = document.querySelector('[data-g="' + groupName + '"] .chip.active');
+        return el ? el.getAttribute('data-v') : '';
+      }
 
       function updateMessage() {
-        var selectedLocal = 'Mesa no lounge coberto';
-        localBtns.forEach(function (b) {
-          if (b.getAttribute('aria-pressed') === 'true') {
-            selectedLocal = b.getAttribute('data-val');
-          }
-        });
+        var ocasiao = getActiveChip('ocasiao') || 'Almoço à Beira-Mar';
+        var espaco = getActiveChip('espaco') || 'Lounge das Tendas';
 
-        var items = [];
-        itemBtns.forEach(function (b) {
-          if (b.getAttribute('aria-pressed') === 'true') {
-            items.push(b.getAttribute('data-val'));
-          }
-        });
-
-        var pLabel = people === 1 ? '1 pessoa' : people + ' pessoas';
-        stepCount.textContent = pLabel;
+        var grupo = [counts.adultos + (counts.adultos === 1 ? ' adulto' : ' adultos')];
+        if (counts.criancas > 0) {
+          grupo.push(counts.criancas + (counts.criancas === 1 ? ' criança' : ' crianças'));
+        }
 
         var datePart = '';
-        if (simDate.value) {
+        if (simDate && simDate.value) {
           var parts = simDate.value.split('-');
           if (parts.length === 3) {
-            datePart = ' no dia ' + parts[2] + '/' + parts[1];
+            datePart = '\n*Data:* ' + parts[2] + '/' + parts[1] + '/' + parts[0];
           }
         }
 
-        var itemsPart = items.length ? ' (' + items.join(', ') + ')' : '';
-        var msg = 'Olá! Vim pelo site do Quiosque Cabana da Reserva. Quero consultar disponibilidade de ' + selectedLocal + ' para ' + pLabel + datePart + itemsPart + '.';
+        var msg = 'Olá! Vim pelo site do *Quiosque Cabana da Reserva* (Ilha 26) e gostaria de consultar disponibilidade:\n\n' +
+                  '*Ocasião:* ' + ocasiao + '\n' +
+                  '*Espaço preferido:* ' + espaco + '\n' +
+                  '*Convidados:* ' + grupo.join(' e ') + datePart;
 
-        previewText.textContent = msg;
-        submitBtn.href = 'https://wa.me/5521964266081?text=' + encodeURIComponent(msg);
+        if (previewText) {
+          previewText.textContent = msg.replace(/\*/g, '');
+          previewText.classList.remove('bump');
+          void previewText.offsetWidth;
+          previewText.classList.add('bump');
+        }
+        if (submitBtn) {
+          submitBtn.href = 'https://wa.me/5521964266081?text=' + encodeURIComponent(msg);
+        }
+
+        document.querySelectorAll('.c-btn').forEach(function (b) {
+          var k = b.getAttribute('data-c');
+          var min = k === 'adultos' ? 1 : 0;
+          var d = Number(b.getAttribute('data-d'));
+          b.disabled = d < 0 ? counts[k] <= min : counts[k] >= 80;
+        });
       }
 
-      localBtns.forEach(function (btn) {
+      document.querySelectorAll('.chips').forEach(function (group) {
+        group.querySelectorAll('.chip').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            group.querySelectorAll('.chip').forEach(function (c) {
+              c.classList.remove('active');
+              c.setAttribute('aria-pressed', 'false');
+            });
+            btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
+            updateMessage();
+          });
+        });
+      });
+
+      document.querySelectorAll('.c-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          localBtns.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
-          btn.setAttribute('aria-pressed', 'true');
+          var k = btn.getAttribute('data-c');
+          var d = Number(btn.getAttribute('data-d'));
+          var min = k === 'adultos' ? 1 : 0;
+          counts[k] = Math.max(min, Math.min(80, counts[k] + d));
+          var valEl = document.getElementById('val-' + k);
+          if (valEl) {
+            valEl.textContent = counts[k];
+            valEl.classList.remove('bump');
+            void valEl.offsetWidth;
+            valEl.classList.add('bump');
+          }
           updateMessage();
         });
       });
 
-      itemBtns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var cur = btn.getAttribute('aria-pressed') === 'true';
-          btn.setAttribute('aria-pressed', cur ? 'false' : 'true');
-          updateMessage();
-        });
-      });
-
-      stepMinus.addEventListener('click', function () {
-        if (people > 1) { people--; updateMessage(); }
-      });
-
-      stepPlus.addEventListener('click', function () {
-        if (people < 80) { people++; updateMessage(); }
-      });
-
-      simDate.addEventListener('change', updateMessage);
+      if (simDate) {
+        simDate.addEventListener('change', updateMessage);
+      }
       updateMessage();
-    })();
+
+      // ---------- 2. Lightbox de Zoom nas Fotos Reais ----------
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightboxImg');
+      var lbClose = document.getElementById('lightboxClose');
+
+      document.querySelectorAll('[data-lightbox]').forEach(function (img) {
+        img.addEventListener('click', function () {
+          lbImg.src = img.currentSrc || img.src;
+          lbImg.alt = img.alt || 'Foto ampliada do Quiosque Cabana da Reserva';
+          lb.classList.add('open');
+        });
+      });
+      if (lbClose) {
+        lbClose.addEventListener('click', function () { lb.classList.remove('open'); });
+      }
+      if (lb) {
+        lb.addEventListener('click', function (e) { if (e.target === lb) lb.classList.remove('open'); });
+      }
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lb) lb.classList.remove('open');
+      });
+
+      // ---------- 3. Revelação por IntersectionObserver + Fallback Nativo ----------
+      var revealEls = document.querySelectorAll('.reveal, .clip, .wave');
+      if ('IntersectionObserver' in window && !reduceMotion) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            var el = en.target;
+            el.classList.add('in');
+            (el.__clips || []).forEach(function (c) { c.classList.add('in'); });
+            io.unobserve(el);
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+        revealEls.forEach(function (el) {
+          if (el.classList.contains('clip')) {
+            var parent = el.parentElement;
+            (parent.__clips = parent.__clips || []).push(el);
+            io.observe(parent);
+          } else {
+            io.observe(el);
+          }
+        });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add('in'); });
+      }
+
+      // Rede de segurança em rAF para rolagem rápida no Android
+      var pending = Array.prototype.slice.call(revealEls), sweeping = false;
+      function sweep() {
+        sweeping = false;
+        var lim = window.innerHeight * 0.96;
+        pending = pending.filter(function (el) {
+          if (el.getBoundingClientRect().top < lim) {
+            el.classList.add('in');
+            return false;
+          }
+          return true;
+        });
+        if (!pending.length) window.removeEventListener('scroll', onSweep);
+      }
+      function onSweep() { if (!sweeping) { sweeping = true; requestAnimationFrame(sweep); } }
+      window.addEventListener('scroll', onSweep, { passive: true });
+      sweep();
+
+      // ---------- 4. Header Flutuante Auto-Hide + Progresso + Fallback Nativo rAF ----------
+      var navWrap = document.getElementById('navWrap');
+      var progress = document.getElementById('progress');
+      var chain = document.getElementById('chain');
+      var chainLine = document.getElementById('chainLine');
+      var stops = Array.prototype.slice.call(document.querySelectorAll('#chain .stop'));
+      var lastY = window.scrollY || 0;
+      var ticking = false;
+
+      function onScrollFrame() {
+        var y = window.scrollY || 0;
+        var vh = window.innerHeight || 1;
+
+        if (navWrap) {
+          if (y > lastY + 6 && y > 140) navWrap.classList.add('hide');
+          else if (y < lastY - 6 || y <= 100) navWrap.classList.remove('hide');
+        }
+        lastY = y;
+
+        // Se GSAP ainda não carregou ou falhar, atualiza barra e trilha via rAF nativo
+        if (!window.__gsapActive) {
+          if (progress) {
+            var maxS = Math.max(1, document.documentElement.scrollHeight - vh);
+            progress.style.transform = 'scaleX(' + Math.min(1, Math.max(0, y / maxS)).toFixed(4) + ')';
+          }
+          if (chain && chainLine && !reduceMotion) {
+            var r = chain.getBoundingClientRect();
+            var k = Math.min(1, Math.max(0, (vh * 0.72 - r.top) / Math.max(1, r.height)));
+            chainLine.style.transform = 'scaleY(' + k.toFixed(3) + ')';
+            stops.forEach(function (s, idx) {
+              s.classList.toggle('on', k >= (idx / Math.max(1, stops.length - 0.5)));
+            });
+          }
+        }
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(onScrollFrame);
+        }
+      }, { passive: true });
+      onScrollFrame();
+
+      // ---------- 5. Auto-Hide do Botão Flutuante WhatsApp (.fab.away) ----------
+      var fab = document.getElementById('fab');
+      if (fab && 'IntersectionObserver' in window) {
+        var visibleZones = new Set();
+        var fio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) visibleZones.add(e.target);
+            else visibleZones.delete(e.target);
+          });
+          fab.classList.toggle('away', visibleZones.size > 0);
+        }, { threshold: 0.18 });
+        [document.querySelector('.hero'), document.getElementById('reservar'), document.getElementById('despedida')].forEach(function (el) {
+          if (el) fio.observe(el);
+        });
+      }
+    });
+
+    // ---------- 6. Movimento Cinematográfico GSAP + ScrollTrigger + Lenis ----------
+    window.addEventListener('load', function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var finePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      if (reduce || !window.gsap || !window.ScrollTrigger) {
+        document.querySelectorAll('#chain .stop').forEach(function (s) { s.classList.add('on'); });
+        return;
+      }
+
+      window.__gsapActive = true;
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Lenis Smooth Scroll em desktop + sincronização com âncoras
+      if (finePointer && window.Lenis) {
+        var lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+        window.__lenis = lenis;
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+        gsap.ticker.lagSmoothing(0);
+
+        document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+          a.addEventListener('click', function (e) {
+            var target = document.querySelector(a.getAttribute('href'));
+            if (!target) return;
+            e.preventDefault();
+            lenis.scrollTo(target, { offset: -74 });
+          });
+        });
+      }
+
+      // Barra de progresso no topo
+      gsap.to('#progress', {
+        scaleX: 1,
+        ease: 'none',
+        scrollTrigger: { start: 0, end: 'max', scrub: 0.25 }
+      });
+
+      // Split words nas seções abaixo da dobra
+      var heroSplit = document.querySelector('.hero .split');
+      document.querySelectorAll('.split').forEach(function (el) {
+        if (el === heroSplit) return;
+        var words = el.querySelectorAll('.wi');
+        if (!words.length) return;
+        gsap.from(words, {
+          yPercent: 110,
+          duration: 0.95,
+          stagger: 0.045,
+          ease: 'expo.out',
+          scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+        });
+      });
+
+      // Parallax suave na foto do Hero e nas fotos reais [data-par]
+      gsap.to('#heroImg', {
+        yPercent: 7,
+        ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+      });
+
+      document.querySelectorAll('[data-par]').forEach(function (img) {
+        var holder = img.closest('figure') || img.parentElement;
+        gsap.fromTo(img,
+          { yPercent: -5 },
+          { yPercent: 5, ease: 'none', scrollTrigger: { trigger: holder, start: 'top bottom', end: 'bottom top', scrub: true } }
+        );
+      });
+
+      gsap.fromTo('[data-final]',
+        { yPercent: -6 },
+        { yPercent: 6, ease: 'none', scrollTrigger: { trigger: '.final', start: 'top bottom', end: 'bottom top', scrub: true } }
+      );
+
+      // Trilha da Experiência (#chain) que se desenha no scroll
+      gsap.fromTo('#chainLine',
+        { scaleY: 0 },
+        { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '#chain', start: 'top 76%', end: 'bottom 55%', scrub: 0.5 } }
+      );
+
+      document.querySelectorAll('#chain .stop').forEach(function (stop) {
+        ScrollTrigger.create({
+          trigger: stop,
+          start: 'top 68%',
+          onEnter: function () { stop.classList.add('on'); },
+          onLeaveBack: function () {
+            if (!stop.classList.contains('start')) stop.classList.remove('on');
+          }
+        });
+      });
+
+      // Contadores animados [data-count]
+      document.querySelectorAll('[data-count]').forEach(function (el) {
+        var end = parseFloat(el.getAttribute('data-count'));
+        var dec = Number(el.getAttribute('data-dec') || 0);
+        var obj = { v: 0 };
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 92%',
+          once: true,
+          onEnter: function () {
+            gsap.to(obj, {
+              v: end,
+              duration: 1.5,
+              ease: 'power2.out',
+              onUpdate: function () {
+                el.textContent = obj.v.toFixed(dec).replace('.', ',');
+              }
+            });
+          }
+        });
+      });
+
+      // Botões magnéticos [data-mag] em dispositivos com mouse
+      if (finePointer) {
+        document.querySelectorAll('[data-mag]').forEach(function (btn) {
+          var qx = gsap.quickTo(btn, 'x', { duration: 0.45, ease: 'power3' });
+          var qy = gsap.quickTo(btn, 'y', { duration: 0.45, ease: 'power3' });
+          btn.addEventListener('mousemove', function (e) {
+            var r = btn.getBoundingClientRect();
+            qx((e.clientX - r.left - r.width / 2) * 0.2);
+            qy((e.clientY - r.top - r.height / 2) * 0.3);
+          });
+          btn.addEventListener('mouseleave', function () {
+            qx(0);
+            qy(0);
+          });
+        });
+      }
+
+      ScrollTrigger.refresh();
+    });
   </script>
 </body>
 </html>
